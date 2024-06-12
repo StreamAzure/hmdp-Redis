@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: hmdp-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root  # 设置root用户的密码
+      MYSQL_DATABASE: hmdp                # 自动创建的数据库
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/data:/var/lib/mysql  # 持久化数据的卷
+      - ./mysql/init:/docker-entrypoint-initdb.d  # 初始化SQL脚本的卷
+
+  redis:
+    image: redis:6.0
+    container_name: hmdp-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis/data:/data  # 持久化Redis数据的卷
