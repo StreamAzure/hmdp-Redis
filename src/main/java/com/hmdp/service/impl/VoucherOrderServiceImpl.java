@@ -53,9 +53,10 @@ public class VoucherOrderServiceImpl extends ServiceImpl<VoucherOrderMapper, Vou
 //        seckillVoucherService.updateById(voucher);
         boolean success = seckillVoucherService.update()
                 .setSql("stock = stock - 1")
-                .eq("voucher_id", voucherId).update();
+                .eq("voucher_id", voucherId).gt("stock", 0) // 以库存数作为版本号
+                .update();
         if (!success) {
-            return Result.fail("秒杀券已抢光！");
+            return Result.fail("秒杀券已被抢完！");
         }
         // 创建订单
         VoucherOrder voucherOrder = new VoucherOrder();
