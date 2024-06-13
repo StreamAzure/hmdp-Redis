@@ -2,10 +2,20 @@ package com.hmdp.controller;
 
 
 import com.hmdp.dto.Result;
+import com.hmdp.entity.SeckillVoucher;
+import com.hmdp.entity.VoucherOrder;
+import com.hmdp.service.ISeckillVoucherService;
+import com.hmdp.service.IVoucherOrderService;
+import com.hmdp.utils.RedisIdWorker;
+import com.hmdp.utils.UserHolder;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -16,10 +26,16 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2021-12-22
  */
 @RestController
+@Slf4j
 @RequestMapping("/voucher-order")
 public class VoucherOrderController {
+
+    @Resource
+    private IVoucherOrderService voucherOrderService;
+
     @PostMapping("seckill/{id}")
     public Result seckillVoucher(@PathVariable("id") Long voucherId) {
-        return Result.fail("功能未完成");
+        log.debug("优惠券秒杀");
+        return voucherOrderService.seckillVoucher(voucherId);
     }
 }
