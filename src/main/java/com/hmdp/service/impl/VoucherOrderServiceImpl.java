@@ -48,6 +48,18 @@ public class VoucherOrderServiceImpl extends ServiceImpl<VoucherOrderMapper, Vou
         if (voucher.getStock() < 1) {
             return Result.fail("秒杀券已被抢完！");
         }
+        return createVoucherOrder(voucherId);
+    }
+
+    @Transactional
+    public synchronized Result createVoucherOrder(Long voucherId){
+        // 一人一单
+        Long userId = UserHolder.getUser().getId();
+        // 查询当前用户有无订单
+        int count = query().eq("user_id", userId).eq("voucher_id", voucherId).count();
+        if(count > 0){
+            return Result.fail("用户已购买该优惠券！");
+        }
         // 扣减库存
 //        voucher.setStock(voucher.getStock() - 1);
 //        seckillVoucherService.updateById(voucher);
@@ -63,11 +75,9 @@ public class VoucherOrderServiceImpl extends ServiceImpl<VoucherOrderMapper, Vou
         // 订单ID通过全局ID生成器生成
         long orderId = redisIdWorker.nextId("order");
         voucherOrder.setId(orderId);
-        Long userId = UserHolder.getUser().getId();;
         voucherOrder.setUserId(userId);
         voucherOrder.setVoucherId(voucherId);
         save(voucherOrder);
-
         return Result.ok(orderId);
     }
 }
