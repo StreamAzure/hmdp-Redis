@@ -13,7 +13,7 @@ services:
       - ./mysql/data:/var/lib/mysql  # 持久化数据的卷
       - ./mysql/init:/docker-entrypoint-initdb.d  # 初始化SQL脚本的卷
 
-  redis:
+  redis-master:
     image: redis:6.0
     container_name: hmdp-redis
     ports:
