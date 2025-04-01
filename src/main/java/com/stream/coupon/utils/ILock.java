@@ -1,4 +1,4 @@
-package com.hmdp.utils;
+package com.stream.coupon.utils;
 
 public interface ILock {
     /**

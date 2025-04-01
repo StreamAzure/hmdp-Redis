@@ -1,6 +1,6 @@
-package com.hmdp.service;
+package com.stream.coupon.service;
 
-import com.hmdp.entity.SeckillVoucher;
+import com.stream.coupon.entity.SeckillVoucher;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 public interface ISeckillVoucherService extends IService<SeckillVoucher> {

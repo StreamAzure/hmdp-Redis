@@ -1,7 +1,7 @@
-package com.hmdp.service;
+package com.stream.coupon.service;
 
-import com.hmdp.dto.Result;
-import com.hmdp.entity.ShopType;
+import com.stream.coupon.dto.Result;
+import com.stream.coupon.entity.ShopType;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 public interface IShopTypeService extends IService<ShopType> {

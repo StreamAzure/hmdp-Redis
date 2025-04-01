@@ -1,4 +1,4 @@
-package com.hmdp.config;
+package com.stream.coupon.config;
 
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
@@ -16,18 +16,18 @@ public class RedissonConfig {
         return Redisson.create(config);
     }
 
-    @Bean
-    public RedissonClient redissonClient1(){
-        // master 2
-        Config config = new Config();
-        config.useSingleServer().setAddress("redis://localhost:6380");
-        return Redisson.create(config);
-    }
-    @Bean
-    public RedissonClient redissonClient2(){
-        // master 3
-        Config config = new Config();
-        config.useSingleServer().setAddress("redis://localhost:6381");
-        return Redisson.create(config);
-    }
+//    @Bean
+//    public RedissonClient redissonClient1(){
+//        // master 2
+//        Config config = new Config();
+//        config.useSingleServer().setAddress("redis://localhost:6380");
+//        return Redisson.create(config);
+//    }
+//    @Bean
+//    public RedissonClient redissonClient2(){
+//        // master 3
+//        Config config = new Config();
+//        config.useSingleServer().setAddress("redis://localhost:6381");
+//        return Redisson.create(config);
+//    }
 }

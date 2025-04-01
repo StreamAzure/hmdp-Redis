@@ -1,11 +1,6 @@
-package com.hmdp.controller;
-import com.hmdp.dto.Result;
-import com.hmdp.entity.SeckillVoucher;
-import com.hmdp.entity.VoucherOrder;
-import com.hmdp.service.ISeckillVoucherService;
-import com.hmdp.service.IVoucherOrderService;
-import com.hmdp.utils.RedisIdWorker;
-import com.hmdp.utils.UserHolder;
+package com.stream.coupon.controller;
+import com.stream.coupon.dto.Result;
+import com.stream.coupon.service.IVoucherOrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,10 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
-import java.time.LocalDateTime;
 
 /**
- * 商品下单 Controller：普通商品下单、限购商品下单、秒杀商品下单
+ * 优惠券购买 Controller：普通优惠券下单、限购优惠券下单、秒杀优惠券下单
  */
 @RestController
 @Slf4j

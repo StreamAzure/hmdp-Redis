@@ -1,7 +1,7 @@
-package com.hmdp.config;
+package com.stream.coupon.config;
 
-import com.hmdp.interceptor.LoginInterceptor;
-import com.hmdp.interceptor.RefreshTokenInterceptor;
+import com.stream.coupon.interceptor.LoginInterceptor;
+import com.stream.coupon.interceptor.RefreshTokenInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

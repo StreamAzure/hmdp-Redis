@@ -1,14 +1,11 @@
-package com.hmdp.service.impl;
+package com.stream.coupon.service.impl;
 
-import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
-import com.hmdp.dto.Result;
-import com.hmdp.entity.Shop;
-import com.hmdp.entity.ShopType;
-import com.hmdp.mapper.ShopTypeMapper;
-import com.hmdp.service.IShopTypeService;
+import com.stream.coupon.dto.Result;
+import com.stream.coupon.entity.ShopType;
+import com.stream.coupon.mapper.ShopTypeMapper;
+import com.stream.coupon.service.IShopTypeService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import io.netty.util.internal.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;

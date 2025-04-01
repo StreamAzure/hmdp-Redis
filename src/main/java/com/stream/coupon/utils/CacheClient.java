@@ -1,9 +1,8 @@
-package com.hmdp.utils;
+package com.stream.coupon.utils;
 import cn.hutool.core.util.BooleanUtil;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import com.hmdp.entity.Shop;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
@@ -13,8 +12,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Function;
-
-import static com.hmdp.utils.RedisConstants.*;
 
 @Slf4j
 @Component
@@ -65,7 +62,7 @@ public class CacheClient {
         R r = dbFallback.apply(id);
         if(r == null){
             // 将空值写入Redis，防缓存穿透
-            stringRedisTemplate.opsForValue().set(key, "", CACHE_NULL_TTL, TimeUnit.MINUTES);
+            stringRedisTemplate.opsForValue().set(key, "", RedisConstants.CACHE_NULL_TTL, TimeUnit.MINUTES);
             // 返回错误信息
             return null;
         }

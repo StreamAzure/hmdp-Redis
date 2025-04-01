@@ -1,9 +1,9 @@
-package com.hmdp.service;
+package com.stream.coupon.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.hmdp.dto.LoginFormDTO;
-import com.hmdp.dto.Result;
-import com.hmdp.entity.User;
+import com.stream.coupon.dto.LoginFormDTO;
+import com.stream.coupon.dto.Result;
+import com.stream.coupon.entity.User;
 
 import javax.servlet.http.HttpSession;
 

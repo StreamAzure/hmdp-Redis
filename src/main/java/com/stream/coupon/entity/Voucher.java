@@ -1,4 +1,4 @@
-package com.hmdp.entity;
+package com.stream.coupon.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -11,14 +11,6 @@ import lombok.experimental.Accessors;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-/**
- * <p>
- * 
- * </p>
- *
- * @author 虎哥
- * @since 2021-12-22
- */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
@@ -64,12 +56,12 @@ public class Voucher implements Serializable {
     private Long actualValue;
 
     /**
-     * 优惠券类型
+     * 优惠券类型（0普通，1限购，2秒杀）
      */
     private Integer type;
 
     /**
-     * 优惠券类型
+     * 优惠券状态（0上架，1下架）
      */
     private Integer status;
     /**
@@ -77,6 +69,12 @@ public class Voucher implements Serializable {
      */
     @TableField(exist = false)
     private Integer stock;
+
+    /**
+     * 限购数量（仅限购优惠券、秒杀优惠券适用）
+     */
+    @TableField(exist = false)
+    private Integer limitNum;
 
     /**
      * 生效时间

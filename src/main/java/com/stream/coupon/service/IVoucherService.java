@@ -1,7 +1,7 @@
-package com.hmdp.service;
+package com.stream.coupon.service;
 
-import com.hmdp.dto.Result;
-import com.hmdp.entity.Voucher;
+import com.stream.coupon.dto.Result;
+import com.stream.coupon.entity.Voucher;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 public interface IVoucherService extends IService<Voucher> {

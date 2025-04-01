@@ -1,10 +1,10 @@
-package com.hmdp;
+package com.stream.coupon;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
-import com.hmdp.dto.UserDTO;
-import com.hmdp.entity.User;
-import com.hmdp.service.IUserService;
+import com.stream.coupon.dto.UserDTO;
+import com.stream.coupon.entity.User;
+import com.stream.coupon.service.IUserService;
 import lombok.Cleanup;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,12 +14,11 @@ import javax.annotation.Resource;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-import static com.hmdp.utils.RedisConstants.LOGIN_USER_KEY;
-import static com.hmdp.utils.RedisConstants.LOGIN_USER_TTL;
+import static com.stream.coupon.utils.RedisConstants.LOGIN_USER_KEY;
+import static com.stream.coupon.utils.RedisConstants.LOGIN_USER_TTL;
 
 @SpringBootTest
 public class UserTokenExporter {

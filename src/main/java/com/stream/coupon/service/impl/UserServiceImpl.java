@@ -1,19 +1,18 @@
-package com.hmdp.service.impl;
+package com.stream.coupon.service.impl;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.bean.copier.CopyOptions;
 import cn.hutool.core.util.RandomUtil;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.hmdp.dto.LoginFormDTO;
-import com.hmdp.dto.Result;
-import com.hmdp.dto.UserDTO;
-import com.hmdp.entity.User;
-import com.hmdp.mapper.UserMapper;
-import com.hmdp.service.IUserService;
-import com.hmdp.utils.RegexUtils;
-import com.hmdp.utils.SystemConstants;
+import com.stream.coupon.dto.LoginFormDTO;
+import com.stream.coupon.dto.Result;
+import com.stream.coupon.dto.UserDTO;
+import com.stream.coupon.entity.User;
+import com.stream.coupon.mapper.UserMapper;
+import com.stream.coupon.service.IUserService;
+import com.stream.coupon.utils.RegexUtils;
+import com.stream.coupon.utils.SystemConstants;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
@@ -21,11 +20,10 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-import static com.hmdp.utils.RedisConstants.*;
+import static com.stream.coupon.utils.RedisConstants.*;
 
 @Service
 @Slf4j
