@@ -24,3 +24,6 @@ mybatis-plus:
 logging:
   level:
     com.stream: debug
+jwt:
+  secret: VGhpcyBpcyBhIHNlY3VyZSBrZXkgZm9yIEhTMjU2IGFsZ29yaXRobQ==
+  expiration: 86400000  # 24小时(毫秒)

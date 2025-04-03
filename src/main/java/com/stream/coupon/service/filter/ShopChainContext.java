@@ -5,6 +5,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.core.Ordered;
+import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
 import java.util.*;
@@ -12,6 +13,7 @@ import java.util.*;
 /**
  * 商家服务责任链上下文容器
  */
+@Component
 public class ShopChainContext<T> implements ApplicationContextAware, CommandLineRunner {
 
     /**
@@ -49,7 +51,7 @@ public class ShopChainContext<T> implements ApplicationContextAware, CommandLine
         Map<String, ShopAbstractChainHandler> chainFilterMap = applicationContext.getBeansOfType(ShopAbstractChainHandler.class);
         chainFilterMap.forEach((beanName, bean) -> {
             // 判断 Mark 是否已经存在抽象责任链容器中，如果已经存在直接向集合新增；如果不存在，创建 Mark 和对应的集合
-            List<ShopAbstractChainHandler> abstractChainHandlers = abstractChainHandlerContainer.getOrDefault(bean.mark(), new ArrayList<>());
+            List<ShopAbstractChainHandler> abstractChainHandlers = abstractChainHandlerContainer.getOrDefault(bean.getBizMark(), new ArrayList<>());
             abstractChainHandlers.add(bean);
             abstractChainHandlerContainer.put(bean.getBizMark(), abstractChainHandlers);
         });

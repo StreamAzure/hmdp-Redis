@@ -10,6 +10,7 @@ import com.stream.coupon.dto.UserDTO;
 import com.stream.coupon.entity.User;
 import com.stream.coupon.mapper.UserMapper;
 import com.stream.coupon.service.IUserService;
+import com.stream.coupon.utils.JwtUtils;
 import com.stream.coupon.utils.RegexUtils;
 import com.stream.coupon.utils.SystemConstants;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +33,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
 
+    @Autowired
+    private JwtUtils jwtUtils;
+
     @Override
     public Result sendCode(String phone, HttpSession session) {
         // 1. 校验手机号
@@ -47,6 +51,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         log.debug("发送短信验证码成功，验证码：{}", code);
         return Result.ok();
     }
+
 
     @Override
     public Result login(LoginFormDTO loginForm, HttpSession session) {
@@ -83,9 +88,31 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         return Result.ok(token);
     }
 
+    /**
+     * 登录，签发 JWT 令牌
+     * @param loginForm
+     * @return
+     */
+    @Override
+    public Result JwtLogin(LoginFormDTO loginForm) {
+        String phone = loginForm.getPhone();
+        if(RegexUtils.isPhoneInvalid(phone)){
+            return Result.fail("手机号格式错误！");
+        }
+        // 查询到用户数据
+        User user = query().eq("phone", phone).one();
+        // 不存在则插入新用户到数据库
+        if(user == null){
+            user = createUserWithPhone(phone);
+        }
+        String token = jwtUtils.generateJwtToken(user);
+        return Result.ok(token);
+    }
+
     private User createUserWithPhone(String phone) {
         User user = new User();
         user.setPhone(phone);
+        // 随机生成昵称
         user.setNickName(SystemConstants.USER_NICK_NAME_PREFIX + RandomUtil.randomString(6));
         // 保存新用户到数据库
         save(user);
